@@ -17,9 +17,8 @@ public class Main {
 /////////////////
 
 //User creation
-        player = new Player();
         System.out.println("Enter your name: ");
-        player.create(Tech.GetInputStringFunction(), 100);
+        player = new Player(Tech.GetInputStringFunction(), 100);
         userInterface();
         company.getPlayers().add(player);
 /////////////////
@@ -42,6 +41,9 @@ public class Main {
 
 //////////////////////////////////
         startLottery();
+
+        System.out.println(company.toString());
+        System.out.println(player.toString());
 
     }
 
@@ -74,6 +76,8 @@ public class Main {
     }
 
     public static void startLottery(){
+
+        company.lotteryCalculation();
 
     }
 

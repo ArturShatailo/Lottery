@@ -46,12 +46,6 @@ public class Ticket implements fillNumber{
         this.prize = prize;
     }
 
-//    public Ticket ticketNumber(){
-//
-//        this.numberFill(7);
-//
-//        return this;
-//    }
 
     @Override
     public void numberFill(int times){

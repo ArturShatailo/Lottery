@@ -106,15 +106,20 @@ public class Company implements fillNumber, buyTicket {
                 .sum();
     }
 
+    public void lotteryCalculation(){
+        this.capital -= this.players.stream().mapToDouble(Player::calculateProfits).sum();
+    }
 
     /////?????????????????????
     public void createPlayers(int amount) {
 
         for (int k = 0; k <= amount; k++) {
             if (!this.tickets.isEmpty()) {
-                Player player = new Player();
 
-                player.create(names[Tech.getRandom(0, names.length - 1)], (Tech.getRandom(1, 9)) * this.ticketPrice);
+                Player player = new Player(
+                        names[Tech.getRandom(0, names.length - 1)],
+                        (Tech.getRandom(1, 9)) * this.ticketPrice);
+
                 this.addTickets(Tech.getRandom(1, (int) (player.getMoney() / this.ticketPrice)), player);
 
                 this.players.add(player);

@@ -10,8 +10,15 @@ public class Player implements buyTicket{
         private ArrayList<Ticket> tickets = new ArrayList<>();
         private double money;
 
+        public Player(String name, double money) {
+                this.name = name;
+                this.money = money;
+        }
+
         public Player() {
         }
+
+
 
         public String getName() {
                 return name;
@@ -49,14 +56,14 @@ public class Player implements buyTicket{
                 return this.name+" "+this.money+" "+this.tickets.toString();
         }
 
-
-        public void create(String name, double money){
-                this.setName(name);
-                this.setMoney(money);
-        }
-
         public void completeTickets(){
                 this.tickets.stream().filter(ticket -> ticket.getNumber().isEmpty()).forEach(n -> n.numberFill(7));
+        }
+
+        public double calculateProfits(){
+                double profit = this.tickets.stream().mapToDouble(Ticket::getPrize).sum();
+                this.money+=profit;
+                return profit;
         }
 
 }
