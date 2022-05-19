@@ -7,7 +7,7 @@ public class Ticket implements fillNumber{
 
     private double price;
     private ArrayList<Integer> number = new ArrayList<>(7);
-    private ArrayList<Integer> consequences = new ArrayList<>();;
+    private final ArrayList<Integer> consequences = new ArrayList<>();
     private double prize;
 
     public Ticket() {
@@ -26,25 +26,20 @@ public class Ticket implements fillNumber{
         return number;
     }
 
-    public void setNumber(ArrayList<Integer> number) {
-        this.number = number;
-    }
-
     public ArrayList<Integer> getConsequences() {
         return consequences;
-    }
-
-    public void setConsequences(ArrayList<Integer> consequences) {
-        this.consequences = consequences;
     }
 
     public double getPrize() {
         return prize;
     }
 
-    public void setPrize(double prize) {
-        this.prize = prize;
-    }
+
+
+//    @Override
+//    public String toString(){
+//        return "#"+ this.number.toString()+"("+this.consequences.size()+")"+" price: "+this.price+" prize: "+this.prize;
+//    }
 
 
     @Override
@@ -59,7 +54,7 @@ public class Ticket implements fillNumber{
 
     @Override
     public String toString(){
-        return "#"+ this.number.toString()+"("+this.consequences.size()+")"+" price: "+this.price+" prize: "+this.prize;
+        return "#"+ this.number.toString()+"("+this.consequences+")"+" prize: "+this.prize;
     }
 
 
@@ -77,7 +72,7 @@ public class Ticket implements fillNumber{
     public void calculateTicketPrize(double mainPrize, int conquerors){
 
         if(this.consequences.size()>2){
-            this.prize = (mainPrize * this.consequences.size() / this.number.size()) / conquerors;
+            this.prize = ((mainPrize * this.consequences.size() / this.number.size()) / conquerors);
         }else{
             this.prize = 0.0;
         }

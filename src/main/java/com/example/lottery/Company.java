@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
-public class Company implements fillNumber, buyTicket {
+public class Company implements fillNumber, buyTicket, getNames {
 
     private double capital;
-    private ArrayList<Ticket> tickets = new ArrayList<>();
-    private ArrayList<Integer> winNumber = new ArrayList<Integer>(7);
-    private ArrayList<Player> players = new ArrayList<>();
+    private final ArrayList<Ticket> tickets = new ArrayList<>();
+    private ArrayList<Integer> winNumber = new ArrayList<>(7);
+    private final ArrayList<Player> players = new ArrayList<>();
     private double mainPrize;
     private double ticketPrice;
 
@@ -21,10 +21,6 @@ public class Company implements fillNumber, buyTicket {
 
     public ArrayList<Player> getPlayers() {
         return players;
-    }
-
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
     }
 
     public ArrayList<Ticket> getTickets() {
@@ -39,16 +35,8 @@ public class Company implements fillNumber, buyTicket {
         this.capital = capital;
     }
 
-    public void setTickets(ArrayList<Ticket> tickets) {
-        this.tickets = tickets;
-    }
-
     public ArrayList<Integer> getWinNumber() {
         return winNumber;
-    }
-
-    public void setWinNumber(ArrayList<Integer> winNumber) {
-        this.winNumber = winNumber;
     }
 
     public double getMainPrize() {
@@ -66,6 +54,9 @@ public class Company implements fillNumber, buyTicket {
     public void setTicketPrice(double ticketPrice) {
         this.ticketPrice = ticketPrice;
     }
+
+
+    ///////////////////
 
 
     public void printTickets(int amount) {
@@ -92,7 +83,7 @@ public class Company implements fillNumber, buyTicket {
     }
 
     public void mainPrizeCalculation() {
-        this.setMainPrize((this.capital / this.tickets.size() * this.tickets.get(0).getPrice())/this.tickets.size());
+        this.setMainPrize((Math.pow((this.capital / this.tickets.size()), 1.4) * this.tickets.get(0).getPrice()));
     }
 
     public int countConquerors(Ticket ticket) {
@@ -108,6 +99,15 @@ public class Company implements fillNumber, buyTicket {
 
     public void lotteryCalculation(){
         this.capital -= this.players.stream().mapToDouble(Player::calculateProfits).sum();
+
+        System.out.println("\nCompany capital: $"+capital);
+
+    }
+
+    public void clearSession(){
+        this.players.removeIf(player -> player.getMoney()<this.ticketPrice);
+        this.players.forEach(Player::clearTickets);
+        winNumber.clear();
     }
 
     /////?????????????????????

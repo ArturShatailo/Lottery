@@ -17,7 +17,6 @@ public class Tech {
     }
 
     public static Integer getRandom(int min, int max){
-
         return (int) (Math.random()*(max-min))+min;
     }
 
