@@ -1,5 +1,8 @@
 package com.example.lottery;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 public class Main {
 
     static private Company company;
@@ -47,6 +50,9 @@ public class Main {
                     for(int i=0; i<7; i++){
                         ticket.getNumber().add(Tech.GetInputFunction());
                     }
+                    ticket.setNumber((ArrayList<Integer>) ticket.getNumber().stream()
+                            .sorted(Integer::compareTo)
+                            .collect(Collectors.toList()));
                 }
             }
         }

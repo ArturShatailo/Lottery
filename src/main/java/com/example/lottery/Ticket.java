@@ -34,7 +34,9 @@ public class Ticket implements fillNumber{
         return prize;
     }
 
-
+    public void setNumber(ArrayList<Integer> number) {
+        this.number = number;
+    }
 
 //    @Override
 //    public String toString(){
