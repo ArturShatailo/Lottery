@@ -42,6 +42,7 @@ public class Ticket implements fillNumber{
 //    }
 
 
+    //filling number of Ticket with 7 digits and sorting them by grow
     @Override
     public void numberFill(int times){
         for(int i=0; i<times; i++){
@@ -60,6 +61,8 @@ public class Ticket implements fillNumber{
 
 
     /////?????????????????????
+    //The method checks if the Ticket is 'lucky' and its digits in number are equal to digits in WinNumber
+    //taking into account an index of each digit. The result of search is filling out of consequences field of the Ticket
     public void isLucky(ArrayList<Integer> winNumber){
 
         for(int i=0, k=0; i<winNumber.size() && k<this.getNumber().size(); i++, k++){
@@ -67,8 +70,10 @@ public class Ticket implements fillNumber{
                 this.consequences.add(i);
             }
         }
+
     }
 
+    //The method calculates amount of prize that is available with the Ticket
     public void calculateTicketPrize(double mainPrize, int conquerors){
 
         if(this.consequences.size()>2){

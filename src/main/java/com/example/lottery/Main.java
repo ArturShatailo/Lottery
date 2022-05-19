@@ -57,7 +57,7 @@ public class Main {
 
         //Completing company with several fields
         company.numberFill(7); //Win Number
-        company.printTickets((int) ((company.getCapital() / 2) / company.getTicketPrice())); //Tickets
+        company.printTickets((int) ((company.getCapital() / 3) / company.getTicketPrice())); //Tickets
         company.mainPrizeCalculation(); //Main Prize
 
         //user interface method call to complete user's (Player) data filling

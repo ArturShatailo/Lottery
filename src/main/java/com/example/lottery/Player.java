@@ -30,6 +30,8 @@ public class Player implements buyTicket{
 
         ///////
 
+        //In this method Player spends money for Ticket according to its field price and then this Ticket will be added to
+        //Players collection
         @Override
         public void buyTicket(Ticket ticket){
                 this.tickets.add(ticket);
@@ -41,14 +43,17 @@ public class Player implements buyTicket{
                 return this.name+" "+this.money+" "+this.tickets;
         }
 
+        //Fill out numbers in tickets that has no filled number (Bots)
         public void completeTickets(){
                 this.tickets.stream().filter(ticket -> ticket.getNumber().isEmpty()).forEach(n -> n.numberFill(7));
         }
 
+        //Clear collection of Tickets
         public void clearTickets(){
                 this.tickets.clear();
         }
 
+        //Sum all profits from all tickets that won. The mutual profit is adding to Player's money field. Results are printing.
         public double calculateProfits(){
                 double profit = this.tickets.stream().mapToDouble(Ticket::getPrize).sum();
                 this.money+=profit;
