@@ -9,13 +9,12 @@ public class Main {
 
         //User creation
         System.out.println("Enter your name: ");
-        player = new Player(Tech.GetInputStringFunction(), 100);
+        player = new Player(Tech.GetInputStringFunction(), 300);
 
         //Company creation
         company = new Company();
         company.setTicketPrice(10.0); //Ticket Price
         company.setCapital(10000.0); //Capital
-
 
         company.getPlayers().add(player);
 

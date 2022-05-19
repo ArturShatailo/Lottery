@@ -88,7 +88,7 @@ public class Company implements fillNumber, buyTicket, getNames {
 
     //Calculation of the main prise field
     public void mainPrizeCalculation() {
-        this.setMainPrize((Math.pow((this.capital / this.tickets.size()), 1.5) * this.tickets.get(0).getPrice()));
+        this.setMainPrize((Math.pow((this.capital / this.tickets.size()), 1.3) * this.tickets.get(0).getPrice()));
     }
 
     //Find Players with the same amount of consequences.
@@ -160,9 +160,9 @@ public class Company implements fillNumber, buyTicket, getNames {
 //                this.buyTicket(ticket);
 //            }
 //        }
-
-        this.tickets.stream().limit(amount).forEachOrdered(n -> this.transferTicket(n, player));
-
+        if (!this.tickets.isEmpty()) {
+            this.tickets.stream().parallel().limit(amount).forEachOrdered(n -> this.transferTicket(n, player));
+        }
     }
 
     public void transferTicket(Ticket ticket, Player player){
